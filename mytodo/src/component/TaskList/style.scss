@@ -1,19 +1,5 @@
-ol {
-    max-width: 100%;
+.tasklist {
+    width: 100%;
     height: auto;
-
-    li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 10px;
-
-        h3 {
-            width: 40%;
-        }
-
-        p {
-            width: 30%;
-        }
-    }
+    margin-top: 30px;
 }

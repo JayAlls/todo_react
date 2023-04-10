@@ -1,10 +1,11 @@
 import React from 'react';
 import Task from '../Task/Task';
+import "./style.scss";
 
 
 function TaskList({ tasks, deleteTask }) {
   return (
-    <div>
+    <div className='tasklist'>
       {tasks.map((task) => (
         <Task 
         key={task.id}

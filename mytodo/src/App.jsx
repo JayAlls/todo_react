@@ -5,7 +5,7 @@ import TodoList from './component/TodoList/TodoList';
 import { useState } from 'react';
 
 function App() {
-  const categories = ["Task 1", "Task 2", "Task 3"]
+  const categories = ["Task 1", "Task 2", "Task 3", "Task 4"]
   const [tasks , setTasks] = useState([])
 
   return (

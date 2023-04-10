@@ -8,7 +8,7 @@ function Task({ id, name, dueDate, priority, deleteTask }) {
         <span>{name}</span>
         <span>{dueDate}</span>
         <span>{priority}</span>
-        <button onClick={() => deleteTask(id)}>Delete</button>
+        <button onClick={() => deleteTask(id)}>X</button>
       </li>
     );
   }
