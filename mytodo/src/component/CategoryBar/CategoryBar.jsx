@@ -27,13 +27,13 @@ function CategoryBar({ categories, addCategory, deleteCategory, editCategory }) 
             <>
               <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
               <button onClick={() => handleEditCategory(index)}>Save</button>
-              <button onClick={() => setEditing(false)}>X</button>
+              <button onClick={() => setEditing(false)} style={{color: "red"}}>X</button>
             </>
           ) : (
             <>
               {category}
               <button onClick={() => setEditing(index)}><FontAwesomeIcon icon={faPen}/></button>
-              <button onClick={() => deleteCategory(index)}>X</button>
+              <button onClick={() => deleteCategory(index)} style={{color: "red"}}>X</button>
             </>
           )}
         </div>
@@ -43,7 +43,7 @@ function CategoryBar({ categories, addCategory, deleteCategory, editCategory }) 
           <>
             <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
             <button onClick={handleAddCategory}>Add</button>
-            <button onClick={() => setEditing(false)}>X</button>
+            <button onClick={() => setEditing(false)} style={{color: "red"}}>X</button>
           </>
         ) : (
           <button onClick={() => setEditing("new")}>+</button>
