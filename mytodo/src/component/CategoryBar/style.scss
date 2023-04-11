@@ -28,7 +28,24 @@
 
         &:hover {
             color: #f2f2f2;
-            background-color: #000;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+        }
+        button {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            margin-left: 5px;
+            
+        }
+    }
+
+    .category-edit {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button, input {
+            margin-left: 5px;
         }
     }
 }   
