@@ -13,6 +13,7 @@ function TaskList({ tasks, deleteTask }) {
         name={task.name}
         dueDate={task.dueDate}
         priority={task.priority}
+        categories={task.category}
         deleteTask={deleteTask}/>
       ))}
     </div>

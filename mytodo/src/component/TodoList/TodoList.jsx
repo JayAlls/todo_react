@@ -3,11 +3,12 @@ import TaskList from "../TaskList/TaskList";
 import TaskForm from "../TaskForm/TaskForm";
 import { v4 as uuidv4 } from 'uuid';
 
-function TodoList() {
+function TodoList({ categories }) {
   const [tasks, setTasks] = useState([]);
 
+
   const addTask = (task) => {
-    const newTask = { ...task, id: uuidv4() };
+    const newTask = { ...task, id: uuidv4(), categories:[task.category] };
     setTasks([...tasks, newTask]);
   };
 
@@ -17,7 +18,7 @@ function TodoList() {
 
   return (
     <div>
-      <TaskForm handleAddTask={addTask} />
+      <TaskForm handleAddTask={addTask} categories={categories} />
       <TaskList tasks={tasks} deleteTask={deleteTask} />
     </div>
   );

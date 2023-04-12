@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import "./style.scss";
 
-function TaskForm({ handleAddTask }) {
+function TaskForm({ handleAddTask, categories }) {
   const [name, setName] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState('');
+  const [category, setCategory] = useState('');
 
+  
+  // Add task to tasklist
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddTask({ name, dueDate, priority });
+    handleAddTask({ name, dueDate, priority, category });
     setName('');
     setDueDate('');
     setPriority('');
+    setCategory('');
   };
 
   return (
@@ -33,6 +37,15 @@ function TaskForm({ handleAddTask }) {
         <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
+      </select>
+
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="">No category</option>
+        {categories.map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
       </select>
       <button type="submit">Add task</button>
     </form>

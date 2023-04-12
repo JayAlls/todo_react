@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <Title />
       <CategoryBar categories={categories} addCategory={addCategory} deleteCategory={deleteCategory} editCategory={editCategory} />
-      <TodoList tasks={tasks} setTasks={setTasks} />
+      <TodoList tasks={tasks} setTasks={setTasks} categories={categories} />
     </div>
   );
 }
