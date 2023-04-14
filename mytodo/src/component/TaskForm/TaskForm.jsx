@@ -4,18 +4,33 @@ import "./style.scss"
 function TaskForm({ handleAddTask }) {
 
     const [name, setName] = useState("")
-    const [deadline, setDeadline] = useState("")
+    const [deadlines, setDeadlines] = useState("")
     const [category, setCategory] = useState("")
+    // add new category
+    const [categories, setCategories] = useState([])
+    const [newCat, setNewCat] = useState("")
+    const [showForm, setShowForm] = useState(false)
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        handleAddTask( name, deadline, category );
+        handleAddTask({ name, deadlines, category });
 
         setName("")
-        setDeadline("")
+        setDeadlines("")
         setCategory("")
     }
+
+    const handleAddCat = (e) => {
+        e.preventDefault()
+
+        setCategories([...categories, newCat])
+        setNewCat("")
+        setShowForm(false)
+    }
+
+   
 
     return (
       <form onSubmit={handleSubmit}>
@@ -28,13 +43,33 @@ function TaskForm({ handleAddTask }) {
 
         <input 
             type="date" 
-            value={deadline}
-            onChange={(e) => setDeadline(e.target.value)}
+            value={deadlines}
+            onChange={(e) => setDeadlines(e.target.value)}
         />
 
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value=''>Select Category</option>
+            {categories.map((cat) => (
+                <option value={cat} key={cat}> {cat} </option>
+            ))}
         </select>
+
+        {showForm ? (
+            <div>
+                <input 
+                    type="text" 
+                    value={newCat}
+                    onChange={(e) => setNewCat(e.target.value)}
+                    placeholder="New Category"
+                />
+
+                <button onClick={handleAddCat}> + </button>
+            </div>
+        ) : (
+            <div>
+                <button onClick={() => setShowForm(true)}>+</button>
+            </div>
+        )}
 
         <button type="submit">Add</button>
       </form>
