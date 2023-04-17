@@ -1,13 +1,13 @@
 import './App.scss';
+import Category from './component/Category/Category';
 import Title from './component/Title/Title';
-import TodoList from './component/TodoList/TodoList';
 
 function App() {
 
   return (
     <div className="App">
       <Title />
-      <TodoList />
+      <Category /> 
     </div>
   );
 }
