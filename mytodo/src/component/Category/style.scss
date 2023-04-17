@@ -1,27 +1,47 @@
 .category-list {
-    margin-top: 150px;
-    width: auto;
-    max-width: 100%;
-    height: 25px;
+    position: relative;
+    width: 100%;
+    height: auto;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .no-cat {
+        width: 100%;
+        text-align: center;
+    }
 
     button {
         cursor: pointer;
     }
 
     .category {
-        width: 10%;
+        width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: center;
+        button {
+            margin-left: 5px;
+            background-color: transparent;
+            border: none;
+            color: white;
+        }
     }
 
     .add-cat {
+        width: 100%;
         button {
             margin-left: 10px;
+        }
+        .add-btn {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .show-cat {
+            text-align: center;
         }
     }
 }

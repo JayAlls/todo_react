@@ -28,12 +28,12 @@ function Category() {
                     </div>
                 ))
             ) : (
-                <p> </p>
+                <p className="no-cat">No Category</p>
             )}
 
             <div className="add-cat">
                 {showAddCat ? (
-                    <div>
+                    <div className="show-cat">
                         <input type="text" value={newCat} placeholder="New category" onChange={(e) => setNewCat(e.target.value)} autoFocus />
 
                         <button onClick={handleAddCat}>Add</button>
@@ -41,7 +41,7 @@ function Category() {
                     </div>
 
                 ) : (
-                    <button onClick={() => setShowAddCat(true)}>Add Category</button>
+                    <button className="add-btn" onClick={() => setShowAddCat(true)}>Add Category</button>
                 )}
             </div>
 
