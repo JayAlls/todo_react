@@ -5,12 +5,22 @@ import Title from './component/Title/Title';
 
 function App() {
   const [showCat, setShowCat] = useState(false)
+  const [tasks, setTasks] = useState([
+    {id: 1, name: "Task 1", category: "category 1"},
+    {id: 2, name: "Task 2", category: "category 2"}
+  ])
+  const [selectedCategory, setSelectedCategory] = useState("")
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category)
+  }
+
   return (
     <div className="App">
       <Title />
       {showCat ? (
         <div className='cat-container'>
-          <Category />
+          <Category onCategoryClick={handleCategoryClick} />
           <button className='close-btn' onClick={() => setShowCat(false)}>X</button>
         </div>
       ) : (

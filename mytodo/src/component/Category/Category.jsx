@@ -1,10 +1,11 @@
 import { useState } from "react"
 import "./style.scss"
 
-function Category() {
-    const [category, setCategory] = useState([])
+function Category({onCategoryClick}) {
+    const [category, setCategory] = useState(["category 1", "category 2"])
     const [newCat, setNewCat] = useState("")
     const [showAddCat, setShowAddCat] = useState(false)
+    
 
     const handleAddCat = (e) => {
         e.preventDefault()
@@ -23,8 +24,8 @@ function Category() {
             {category.length > 0 ? (
                 category.map((cat) => (
                     <div key={cat} className="category">
-                    <p>{cat}</p>
-                    <button onClick={() => deleteCat(cat)}>x</button>
+                        <p onClick={() => onCategoryClick(cat)}>{cat}</p>
+                        <button onClick={() => deleteCat(cat)}>x</button>
                     </div>
                 ))
             ) : (
