@@ -14,20 +14,25 @@ body {
   color: #fff;
 }
 
-.cat-btn {
+.container {
   margin-top: 150px;
-}
-
-.cat-container {
-  position: relative;
-  margin-top: 150px;
-  height: 100%;
-  width: 15%;
-  border: 1px solid white;
-  .close-btn {
-    position: absolute;
-    top: 0;
-    right: -26px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  
+  .cat-container {
+    position: relative;
+    height: 100%;
+    width: 15%;
+    border: 1px solid white;
+    .close-btn {
+      position: absolute;
+      top: 0;
+      right: -26px;
+    }
   }
 }
+
+
 
