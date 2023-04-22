@@ -3,20 +3,26 @@ import "./style.scss"
 
 function Task({selectedCategory, tasks}) {
     const [completedTask, setCompletedTask] = useState([])
-    const [uncompletedTasks, setUncompletedTask] = useState(tasks)
 
     
     const  handleCheckedTask = (taskId) => {
-        const taskIndex = uncompletedTasks.findIndex((task) => task.id === taskId);
-        const task = uncompletedTasks[taskIndex]
-        setUncompletedTask(uncompletedTasks.filter((task) => task.id !== taskId))
-        setCompletedTask([...completedTask,task])
+        if (!completedTask.includes(taskId)) {
+            setCompletedTask([...completedTask, taskId])
+        }
+    }
+    const  handleNoCheckedTask = (taskId) => {
+        if (completedTask.includes(taskId)) {
+            setCompletedTask(completedTask.filter((t) => t !== taskId))
+        }
     }
     
     const filteredTasks = 
     selectedCategory === "" 
-    ? uncompletedTasks
-    : uncompletedTasks.filter((task) => task.category === selectedCategory);
+    ? tasks
+    : tasks.filter((task) => task.category === selectedCategory);
+
+    const uncompletedTask = filteredTasks.filter((task) => !completedTask.includes(task.id))
+    const completedTasks = filteredTasks.filter((task) => completedTask.includes(task.id))
     
     // useEffect(() => {
     //     // console.log(selectedCategory);
@@ -27,10 +33,10 @@ function Task({selectedCategory, tasks}) {
     return (
         <div className="task-container">
             <h2>À faire</h2>
-            {filteredTasks && filteredTasks.length > 0 ? (
-                filteredTasks.map((task) => (
+            {uncompletedTask && uncompletedTask.length > 0 ? (
+                uncompletedTask.map((task) => (
                     <div key={task.id} className="task">
-                        <input type="checkbox" checked={completedTask.some((t) => t.id === task.id)} onChange={() => handleCheckedTask(task.id)} />
+                        <input type="checkbox" checked={false} onChange={() => handleCheckedTask(task.id)} />
                         <p>{task.name}</p>
                     </div>
                 ))
@@ -40,15 +46,18 @@ function Task({selectedCategory, tasks}) {
 
             <h2>Terminé</h2>
             
-            {completedTask.length > 0 ? (
-                completedTask.map((task) => (
-                  <div key={task.id} className="task">
-                    <p>{task.name}</p>
-                  </div>  
-                ))
-            ) : (
-                <p>Pas tâches terminées</p>
-            )}
+            <div className="completed-task">
+                {completedTasks && completedTasks.length > 0 ? (
+                    completedTasks.map((task) => (
+                        <div key={task.id} className="task" >
+                            <input type="checkbox" checked={true} onChange={() => handleNoCheckedTask(task.id)} />
+                            <p>{task.name}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>Pas de tâche terminées</p>
+                )}
+            </div>
         </div>
     )
 }

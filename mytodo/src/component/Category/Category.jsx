@@ -9,7 +9,6 @@ function Category({onCategoryClick}) {
 
     const handleAddCat = (e) => {
         e.preventDefault()
-
         setCategory([...category, newCat])
         setShowAddCat(false)
         setNewCat("")
