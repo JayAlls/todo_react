@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./style.scss"
+import TaskForm from "./TaskForm/TaskForm";
 
-function Task({selectedCategory, tasks}) {
+function Task({selectedCategory, tasks, onAddTask, category}) {
     const [completedTask, setCompletedTask] = useState([])
 
     
@@ -15,6 +16,8 @@ function Task({selectedCategory, tasks}) {
             setCompletedTask(completedTask.filter((t) => t !== taskId))
         }
     }
+
+    
     
     const filteredTasks = 
     selectedCategory === "" 
@@ -32,6 +35,8 @@ function Task({selectedCategory, tasks}) {
         
     return (
         <div className="task-container">
+            <TaskForm onAddTask={onAddTask} category={category}/>
+
             <h2>À faire</h2>
             {uncompletedTask && uncompletedTask.length > 0 ? (
                 uncompletedTask.map((task) => (
