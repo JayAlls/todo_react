@@ -14,6 +14,9 @@ function Category({ onCategoryClick, category, deleteCat, onNewCat }) {
   
     return (
       <div className="category-list">
+        <div className="category">
+          <p onClick={() => onCategoryClick("")}>All Category</p>
+        </div>
         {category.length > 0 ? (
           category.map((cat) => (
             <div key={cat} className="category">

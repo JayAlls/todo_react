@@ -5,34 +5,33 @@ import Title from './component/Title/Title';
 import Task from './component/Task/Task';
 
 function App() {
-  const [showCat, setShowCat] = useState(false)
-  const [tasks, setTasks] = useState([
-    {id: 1, name: "Task 1", category: "category 1"},
-    {id: 2, name: "Task 2", category: "category 2"}
-  ])
-
+  const [tasks, setTasks] = useState([])
+  
   // CATEGORY
+  const [showCat, setShowCat] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("")
   const [category, setCategory] = useState(["category 1", "category 2"])
 
   const handleAddCat = (newCat) => {
-    setCategory([...category, newCat])
+    setCategory([...category, newCat]) // ajout d'une categorie
   }
 
   const deleteCat = (cat) => {
-    setCategory(category.filter((c) => c !== cat ))
+    setCategory(category.filter((c) => c !== cat )) // suppression d'une categorie
   } 
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category)
+    setSelectedCategory(category) // selection d'une categories à afficher
   }
 
   const handleNewCat = (newCat) => {
     setCategory([...category, newCat]); // mise à jour de la catégorie dans l'état de App
   };
 
+  // TASK
+
   const addTask = (newTask) => {
-        setTasks([...tasks, newTask])
+        setTasks([...tasks, newTask]) // ajout d'une tâche
   }
 
   return (

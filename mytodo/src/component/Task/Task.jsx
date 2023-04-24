@@ -17,8 +17,6 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
         }
     }
 
-    
-    
     const filteredTasks = 
     selectedCategory === "" 
     ? tasks
@@ -43,6 +41,8 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                     <div key={task.id} className="task">
                         <input type="checkbox" checked={false} onChange={() => handleCheckedTask(task.id)} />
                         <p>{task.name}</p>
+                        <p>{task.category}</p>
+                        <p>{task.priority}</p>
                     </div>
                 ))
             ) : (
@@ -57,6 +57,8 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                         <div key={task.id} className="task" >
                             <input type="checkbox" checked={true} onChange={() => handleNoCheckedTask(task.id)} />
                             <p>{task.name}</p>
+                            <p>{task.category}</p>
+                            <p>{task.priority}</p>
                         </div>
                     ))
                 ) : (
