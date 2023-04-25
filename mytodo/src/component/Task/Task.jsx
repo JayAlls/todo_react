@@ -46,20 +46,21 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                         <p>{task.deadline}</p>
                     </div>
                 ))
-            ) : (
-                <p>No task available</p>
-            )}
+                ) : (
+                    <p>No task available</p>
+                    )}
 
             <h2>Terminé</h2>
             
-            <div className="completed-task">
+            <div className="task">
                 {completedTasks && completedTasks.length > 0 ? (
                     completedTasks.map((task) => (
-                        <div key={task.id} className="task" >
+                        <div key={task.id} className="task completed" >
                             <input type="checkbox" checked={true} onChange={() => handleNoCheckedTask(task.id)} />
                             <p>{task.name}</p>
                             <p>{task.category}</p>
                             <p>{task.priority}</p>
+                            <p>{task.deadline}</p>
                         </div>
                     ))
                 ) : (
