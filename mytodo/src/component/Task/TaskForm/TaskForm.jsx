@@ -47,12 +47,8 @@ function TaskForm({ onAddTask, category }) {
         </select>
       </label>
 
-      <label>
-        <input type="date" value={deadline} onChange={(event) => setDeadline(event.target.value)} />
-      </label>
-
       <button type="submit">
-        Add Task
+        +
       </button>
 
     </form>

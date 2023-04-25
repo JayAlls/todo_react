@@ -4,7 +4,7 @@ function Title() {
 
   return (
     <div className="title">
-      <span>MY TO DO LIST</span>
+      <span>My ToDay </span>
       <h1>WORK HARD</h1>
     </div>
   )

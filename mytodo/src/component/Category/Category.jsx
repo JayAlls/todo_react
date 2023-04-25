@@ -25,7 +25,7 @@ function Category({ onCategoryClick, category, deleteCat, onNewCat }) {
             </div>
           ))
         ) : (
-          <p className="no-cat">No Category</p>
+          <span></span>
         )}
   
         <div className="add-cat">

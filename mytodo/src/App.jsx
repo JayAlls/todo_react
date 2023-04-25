@@ -10,7 +10,7 @@ function App() {
   // CATEGORY
   const [showCat, setShowCat] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState("")
-  const [category, setCategory] = useState(["category 1", "category 2"])
+  const [category, setCategory] = useState([])
 
   const handleAddCat = (newCat) => {
     setCategory([...category, newCat]) // ajout d'une categorie

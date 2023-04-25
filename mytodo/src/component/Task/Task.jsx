@@ -43,16 +43,15 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                         <p>{task.name}</p>
                         <p>{task.category}</p>
                         <p>{task.priority}</p>
-                        <p>{task.deadline}</p>
                     </div>
                 ))
                 ) : (
-                    <p>No task available</p>
-                    )}
+                    <p className="none">Aucune tâches assignées</p>
+                )}
 
             <h2>Terminé</h2>
             
-            <div className="task">
+            <div>
                 {completedTasks && completedTasks.length > 0 ? (
                     completedTasks.map((task) => (
                         <div key={task.id} className="task completed" >
@@ -60,11 +59,10 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                             <p>{task.name}</p>
                             <p>{task.category}</p>
                             <p>{task.priority}</p>
-                            <p>{task.deadline}</p>
                         </div>
                     ))
                 ) : (
-                    <p>Pas de tâche terminées</p>
+                    <p className="none">Pas de tâches terminé</p>
                 )}
             </div>
         </div>
