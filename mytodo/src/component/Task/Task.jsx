@@ -43,6 +43,7 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                         <p>{task.name}</p>
                         <p>{task.category}</p>
                         <p>{task.priority}</p>
+                        <p>{task.deadline}</p>
                     </div>
                 ))
             ) : (

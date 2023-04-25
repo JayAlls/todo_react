@@ -5,10 +5,11 @@ function TaskForm({ onAddTask, category }) {
   const [name, setName] = useState("");
   const [selectedCat, setSelectedCat] = useState("")
   const [selectedPriority, setSelectedPriority] = useState("")
+  const [deadline, setDeadline] = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddTask({ id: Date.now(), name, category: selectedCat, priority: selectedPriority });
+    onAddTask({ id: Date.now(), name, category: selectedCat, priority: selectedPriority, deadline});
     setName("");
     setSelectedPriority("");
     setSelectedCat("");
@@ -18,16 +19,15 @@ function TaskForm({ onAddTask, category }) {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Task name:
         <input
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
+          placeholder="Task name"
         />
       </label>
 
       <label>
-        Task category:
         <select value={selectedCat} onChange={(event) => setSelectedCat(event.target.value)}>
           <option value="">Select Category</option>
           {category.map((cat) => (
@@ -45,6 +45,10 @@ function TaskForm({ onAddTask, category }) {
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
+      </label>
+
+      <label>
+        <input type="date" value={deadline} onChange={(event) => setDeadline(event.target.value)} />
       </label>
 
       <button type="submit">
