@@ -5,12 +5,12 @@ import Title from './component/Title/Title';
 import Task from './component/Task/Task';
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState([]) // stockage des tâches
   
   // CATEGORY
-  const [showCat, setShowCat] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState("")
-  const [category, setCategory] = useState([])
+  const [showCat, setShowCat] = useState(false) // affichage des catégories
+  const [selectedCategory, setSelectedCategory] = useState("") // séléction d'un categorie
+  const [category, setCategory] = useState([]) // stockage des categories 
 
   const handleAddCat = (newCat) => {
     setCategory([...category, newCat]) // ajout d'une categorie
@@ -34,6 +34,10 @@ function App() {
         setTasks([...tasks, newTask]) // ajout d'une tâche
   }
 
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter((task) => task.id !== taskId))
+  }
+
   return (
     <div className="App">
       <Title />
@@ -47,7 +51,7 @@ function App() {
         ) : (
           <button className='cat-btn' onClick={() => setShowCat(true)}>Categories</button>
           )} 
-        <Task selectedCategory={selectedCategory} tasks={tasks} onAddTask={addTask} category={category}/>
+        <Task selectedCategory={selectedCategory} tasks={tasks} onAddTask={addTask} deleteTask={deleteTask} category={category}/>
       </div>
     </div>
   );

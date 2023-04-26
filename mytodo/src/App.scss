@@ -18,6 +18,10 @@ body {
 .App {
   height: 100%;
   width: 100%;
+
+  button {
+    cursor: pointer;
+  }
   .container {
     margin-top: 150px;
     width: 100%;
@@ -26,7 +30,6 @@ body {
     justify-content: space-between;
 
     .cat-btn {
-      cursor: pointer;
       background-color: transparent;
       color: #fff;
       border: 1px solid whitesmoke;

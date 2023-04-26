@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.scss"
 import TaskForm from "./TaskForm/TaskForm";
 
-function Task({selectedCategory, tasks, onAddTask, category}) {
+function Task({selectedCategory, tasks, onAddTask, deleteTask, category}) {
     const [completedTask, setCompletedTask] = useState([])
 
     
@@ -43,11 +43,12 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                         <p>{task.name}</p>
                         <p>{task.category}</p>
                         <p>{task.priority}</p>
+                        <button onClick={() => deleteTask(task.id)}>x</button>
                     </div>
                 ))
                 ) : (
                     <p className="none">Aucune tâches assignées</p>
-                )}
+                    )}
 
             <h2>Terminé</h2>
             
@@ -59,6 +60,7 @@ function Task({selectedCategory, tasks, onAddTask, category}) {
                             <p>{task.name}</p>
                             <p>{task.category}</p>
                             <p>{task.priority}</p>
+                            <button onClick={() => deleteTask(task.id)}>x</button>
                         </div>
                     ))
                 ) : (

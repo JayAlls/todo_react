@@ -19,18 +19,40 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 0.3s ease;
+        border-bottom: 1px dashed rgba($color: wheat, $alpha: 0.5);
+
         button {
             margin-left: 5px;
             background-color: transparent;
             border: none;
-            color: white;
+            color: wheat;
+        }
+
+        &:hover {
+            opacity: 0.7;
         }
     }
 
     .add-cat {
         width: 100%;
+        margin: 10px auto;
         button {
-            margin-left: 10px;
+            margin: 10px;
+            border: none;
+            color: whitesmoke;
+            font-weight: bold;
+            background: transparent;
+            font-style: italic;
+            transition: all 0.3s ease;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        input {
+            max-width: 90%;
+            border: none;
         }
         .add-btn {
             width: 100%;
