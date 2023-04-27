@@ -43,7 +43,7 @@ function Task({selectedCategory, tasks, onAddTask, deleteTask, category}) {
                         <p>{task.name}</p>
                         <p>{task.category}</p>
                         <p>{task.priority}</p>
-                        <button onClick={() => deleteTask(task.id)}>x</button>
+                        <button onClick={() => deleteTask(task)}>x</button>
                     </div>
                 ))
                 ) : (

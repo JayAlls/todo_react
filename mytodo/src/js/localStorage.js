@@ -28,7 +28,7 @@ const setItem = (key, value) => {
 // Suppression d'un élément dans le localStorage
 const deleteItem = (key, value) => {
     const items = getItems(key);
-    const updatedItems = items.filter((item) => item !== value);
+    const updatedItems = items.filter((item) => item.id !== value.id);
     saveItem(key, updatedItems);
 };
 

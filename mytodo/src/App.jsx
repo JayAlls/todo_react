@@ -38,10 +38,13 @@ function App() {
 
   const addTask = (newTask) => {
         setTasks([...tasks, newTask]) // ajout d'une tâche
+        setItem("tasks", newTask)
   }
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId))
+    const deletedTask = tasks.filter((task) => task !== taskId);
+    setTasks(deletedTask)
+    deleteItem("tasks", taskId)
   }
 
   return (

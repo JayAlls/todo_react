@@ -5,11 +5,10 @@ function TaskForm({ onAddTask, category }) {
   const [name, setName] = useState("");
   const [selectedCat, setSelectedCat] = useState("")
   const [selectedPriority, setSelectedPriority] = useState("")
-  const [deadline, setDeadline] = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddTask({ id: Date.now(), name, category: selectedCat, priority: selectedPriority, deadline});
+    onAddTask({ id: Date.now(), name, category: selectedCat, priority: selectedPriority});
     setName("");
     setSelectedPriority("");
     setSelectedCat("");
