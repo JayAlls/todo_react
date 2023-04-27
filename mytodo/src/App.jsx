@@ -3,29 +3,35 @@ import './App.scss';
 import Category from "./component/Category/Category";
 import Title from './component/Title/Title';
 import Task from './component/Task/Task';
+import {getItems, setItem, deleteItem} from "./js/localStorage";
 
 function App() {
-  const [tasks, setTasks] = useState([]) // stockage des tâches
+  const [tasks, setTasks] = useState(getItems("tasks") || []) // stockage des tâches
   
   // CATEGORY
   const [showCat, setShowCat] = useState(false) // affichage des catégories
   const [selectedCategory, setSelectedCategory] = useState("") // séléction d'un categorie
-  const [category, setCategory] = useState([]) // stockage des categories 
+  const [category, setCategory] = useState(getItems("category") || []) // stockage des categories 
 
   const handleAddCat = (newCat) => {
-    setCategory([...category, newCat]) // ajout d'une categorie
+    const updatedCat = [...category, newCat]
+    setCategory(updatedCat) // ajout d'une categorie
   }
-
+  
   const deleteCat = (cat) => {
-    setCategory(category.filter((c) => c !== cat )) // suppression d'une categorie
+    const deletedCat = category.filter((c) => c !== cat );
+    setCategory(deletedCat) // suppression d'une categorie
+    deleteItem("category", cat)
+    
   } 
-
+  
   const handleCategoryClick = (category) => {
     setSelectedCategory(category) // selection d'une categories à afficher
   }
-
+  
   const handleNewCat = (newCat) => {
     setCategory([...category, newCat]); // mise à jour de la catégorie dans l'état de App
+    setItem("category", newCat)
   };
 
   // TASK
