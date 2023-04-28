@@ -1,3 +1,5 @@
+@import "../../config-scss/mixin.scss";
+
 .task-container {
     width: 80%;
     height: 350px;
@@ -6,9 +8,17 @@
     margin: 0 auto;
     margin-bottom: 20px;
     overflow-y: scroll;
+    @include mobile-only {
+        width: 98%;
+        height: 400px;
+    }
 
     h2 {
         text-align: center;
+        font-size: 3vw;
+        @include mobile-only {
+            font-size: 4vw;
+        }
     }
 
     .task {
@@ -18,8 +28,14 @@
         justify-content: space-evenly;
         border-bottom: 2px dashed rgba($color: rgb(225, 225, 225), $alpha: 0.3);
         p {
+            font-size: 1.5vw;
+            text-align: center;
             width: 20%;
             position: relative;
+
+            @include mobile-only {
+                font-size: 2vw;
+            }
             &::before {
                 content: "";
                 width: 1px;
@@ -62,5 +78,9 @@
         font-style: italic;
         font-size: 1.5vw;
         font-family: serif;
+
+        @include mobile-only {
+            font-size: 3vw;
+        }
     }
 }

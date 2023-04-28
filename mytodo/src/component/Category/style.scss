@@ -1,3 +1,5 @@
+@import "../../config-scss/mixin.scss";
+
 .category-list {
     position: relative;
     width: 100%;
@@ -7,6 +9,9 @@
     justify-content: space-between;
     flex-direction: column;
 
+    @include mobile-only {
+        flex-direction: row;
+    }
 
     button {
         cursor: pointer;
@@ -21,6 +26,13 @@
         justify-content: center;
         transition: all 0.3s ease;
         border-bottom: 1px dashed rgba($color: wheat, $alpha: 0.5);
+        font-size: 2vw;
+
+        @include mobile-only {
+            border-bottom: none;
+            border-right: 1px dashed rgba($color: wheat, $alpha: 0.5);
+            font-size: 2.5vw;
+        }
 
         button {
             margin-left: 5px;
@@ -37,6 +49,10 @@
     .add-cat {
         width: 100%;
         margin: 10px auto;
+        @include mobile-only {
+            width: 90%;
+            margin: auto;
+        }
         button {
             margin: 10px;
             border: none;
@@ -45,18 +61,31 @@
             background: transparent;
             font-style: italic;
             transition: all 0.3s ease;
+            padding: 0;
+            font-size: 2vw;
+            
             &:hover {
                 opacity: 0.7;
+            }
+
+            @include mobile-only {
+                font-size: 2.4vw;
+                
             }
         }
 
         input {
             max-width: 90%;
             border: none;
+
+            @include mobile-only {
+                max-width: 80%;
+            }
         }
         .add-btn {
             width: 100%;
             margin: 0 auto;
+
         }
 
         .show-cat {
