@@ -8,15 +8,16 @@ function Task({selectedCategory, tasks, onAddTask, deleteTask, category}) {
     
     const  handleCheckedTask = (taskId) => {
         if (!completedTask.includes(taskId)) {
-            setCompletedTask([...completedTask, taskId])
+            setCompletedTask([...completedTask, taskId]) // Ajoute la tâche aux tâches terminées
         }
     }
     const  handleNoCheckedTask = (taskId) => {
         if (completedTask.includes(taskId)) {
-            setCompletedTask(completedTask.filter((t) => t !== taskId))
+            setCompletedTask(completedTask.filter((t) => t !== taskId)) // Retire la tâche des tâches terminées
         }
     }
 
+    // Filtre les tâches par rapport à la categorie séléctionnée
     const filteredTasks = 
     selectedCategory === "" 
     ? tasks
