@@ -16,7 +16,6 @@ const getItems = (key) => {
 // Ajout d'un élément dans le localStorage
 const setItem = (key, value) => {
     let items = getItems(key, value);
-    console.log(items);
     if (items.length === 0) {
         items = [value];
     } else {

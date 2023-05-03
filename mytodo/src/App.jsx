@@ -6,9 +6,9 @@ import Task from './component/Task/Task';
 import {getItems, setItem, deleteItem} from "./js/localStorage";
 
 function App() {
-  const [tasks, setTasks] = useState(getItems("tasks") || []) // stockage des tâches
   
-  // CATEGORY
+  // **************************************** CATEGORY ****************************************************************
+  
   const [showCat, setShowCat] = useState(false) // affichage des catégories
   const [selectedCategory, setSelectedCategory] = useState("") // séléction d'un categorie
   const [category, setCategory] = useState(getItems("category") || []) // stockage des categories 
@@ -33,18 +33,63 @@ function App() {
     setCategory([...category, newCat]); // mise à jour de la catégorie dans l'état de App
     setItem("category", newCat)
   };
+  
+  // ************************************************ TASK *******************************************************
+  const [tasks, setTasks] = useState([]) // Stockage des tâches
 
-  // TASK
+  // Récupère les tâches dans la base de donnée
+  useEffect(() => {
+    fetch("http://localhost:3000/tasks")
+      .then(res => res.json())
+      .then(data => setTasks(data))
+      .catch(err => console.error(err))
+  }, []);
+  
 
   const addTask = (newTask) => {
-        setTasks([...tasks, newTask]) // ajout d'une tâche
-        setItem("tasks", newTask)
+
+    // Ajoute une tâche à la base de donnée 
+    fetch("http://localhost:3000/tasks", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newTask)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err))
+    
+    setTasks([...tasks, newTask]) // ajout d'une tâche
+    setItem("tasks", newTask)
   }
 
+
   const deleteTask = (taskId) => {
-    const deletedTask = tasks.filter((task) => task !== taskId);
-    setTasks(deletedTask)
+    const id = taskId._id
+    console.log(id);
+    console.log(taskId);
+    history.pushState(null, null, id);
+    const updatedTask = tasks.filter((task) => task !== taskId)
+    setTasks(updatedTask)
     deleteItem("tasks", taskId)
+    
+    // Supprime une tâche à la base de donnée 
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Task deleted:', data);
+      })
+      .catch(error => {
+        console.error('Error deleting task:', error);
+      });
   }
 
   return (
