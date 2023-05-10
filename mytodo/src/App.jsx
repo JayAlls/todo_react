@@ -3,7 +3,6 @@ import './App.scss';
 import Category from "./component/Category/Category";
 import Title from './component/Title/Title';
 import Task from './component/Task/Task';
-import {getItems, setItem, deleteItem} from "./js/localStorage";
 
 function App() {
   
@@ -11,7 +10,7 @@ function App() {
   
   const [showCat, setShowCat] = useState(false) // affichage des catégories
   const [selectedCategory, setSelectedCategory] = useState("") // séléction d'un categorie
-  const [category, setCategory] = useState(getItems("category") || []) // stockage des categories 
+  const [category, setCategory] = useState([]) // stockage des categories 
 
   const handleAddCat = (newCat) => {
     const updatedCat = [...category, newCat]
@@ -21,7 +20,6 @@ function App() {
   const deleteCat = (cat) => {
     const deletedCat = category.filter((c) => c !== cat );
     setCategory(deletedCat) // suppression d'une categorie
-    deleteItem("category", cat)
     
   } 
   
@@ -31,7 +29,6 @@ function App() {
   
   const handleNewCat = (newCat) => {
     setCategory([...category, newCat]); // mise à jour de la catégorie dans l'état de App
-    setItem("category", newCat)
   };
   
   // ************************************************ TASK *******************************************************
@@ -41,11 +38,14 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3000/tasks")
       .then(res => res.json())
-      .then(data => setTasks(data))
+      .then(data => {
+        setTasks(data)
+      })
       .catch(err => console.error(err))
   }, []);
-  
 
+  
+  
   const addTask = (newTask) => {
 
     // Ajoute une tâche à la base de donnée 
@@ -61,18 +61,17 @@ function App() {
     .catch(err => console.error(err))
     
     setTasks([...tasks, newTask]) // ajout d'une tâche
-    setItem("tasks", newTask)
   }
+
+  
 
 
   const deleteTask = (taskId) => {
-    const id = taskId._id
-    console.log(id);
+    const id = taskId.id
     console.log(taskId);
     history.pushState(null, null, id);
     const updatedTask = tasks.filter((task) => task !== taskId)
     setTasks(updatedTask)
-    deleteItem("tasks", taskId)
     
     // Supprime une tâche à la base de donnée 
     fetch(`http://localhost:3000/tasks/${id}`, {

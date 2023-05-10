@@ -8,7 +8,7 @@ function TaskForm({ onAddTask, category }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddTask({ id: Date.now(), name, category: selectedCat, priority: selectedPriority});
+    onAddTask({ id: Date.now(), name, category: selectedCat, priority: selectedPriority, completed: false});
     setName("");
     setSelectedPriority("");
     setSelectedCat("");
@@ -30,7 +30,7 @@ function TaskForm({ onAddTask, category }) {
         <select value={selectedCat} onChange={(event) => setSelectedCat(event.target.value)}>
           <option value="">Select Category</option>
           {category.map((cat) => (
-            <option key={cat} value={cat}>
+            <option key={`category-${cat}`} value={cat}>
               {cat}
             </option>
           ))}
